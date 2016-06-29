@@ -6,7 +6,8 @@
     "modernizr": "~2.8.1",
     "handlebars": "^4.0.5",
     "starrr": "^2.0.1",
-    "components-font-awesome": "^4.6.3"
+    "components-font-awesome": "^4.6.3",
+    "Chart.js": "^2.1.6"
   },
   "overrides": {
     "bootstrap-sass": {

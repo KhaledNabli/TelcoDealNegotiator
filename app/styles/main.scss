@@ -77,6 +77,14 @@ body {
   color: #777;
 }
 
+.kpi-circle {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    padding-top: 20px;
+    margin-top: 10px;
+}
+
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
