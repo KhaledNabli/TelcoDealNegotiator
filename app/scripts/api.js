@@ -9,7 +9,7 @@ var dataStore = {
 };
 
 
-/**** API CALLS to be redined ****/
+/**** API CALLS to be redefined ****/
 
 /**
 * return the list of customers to deal with
@@ -18,11 +18,11 @@ function getCustomerList() {
 	// TODO: add logic to call backend system
 
 	var customerList = [
-		{id: "10001", name: "Khaled Nabli", msisdn: "+41795095890", sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
-		{id: "10002", name: "Adrian Carr", msisdn: "+49795095890", sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
-		{id: "10003", name: "Nicolas Payares", msisdn: "+41795095890", sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
-		{id: "10004", name: "Kadir Dindar", msisdn: "+41795095890", sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
-		{id: "10005", name: "Mathias Bouten", msisdn: "+41795095890", sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120}
+		{id: '10001', name: 'Khaled Nabli', msisdn: '+41795095890', sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
+		{id: '10002', name: 'Adrian Carr', msisdn: '+49795095890', sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
+		{id: '10003', name: 'Nicolas Payares', msisdn: '+41795095890', sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
+		{id: '10004', name: 'Kadir Dindar', msisdn: '+41795095890', sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120},
+		{id: '10005', name: 'Mathias Bouten', msisdn: '+41795095890', sms:0.7, voice: 0.5, data:0.99, national: 0.4, roaming: 0.65, clv: 5000, churn: 0.1, budget: 120}
 	];
 
 	getCustomerListDone(customerList);
@@ -44,11 +44,10 @@ function getCustomerListDone(result) {
 function getBundles(activeCustomer, relatedCustomers) {
 	// TODO: add logic to call backend system
 	var bundles = [
-		{name: "Bundle 1", desc: "Desc 1", tarif: "Tarif 1", handheld: "iPhone 1", accessoir: "123123", takeProp: "77", benefit: "$45"},
-		{name: "Bundle 2", desc: "Desc 1", tarif: "Tarif 1", handheld: "iPhone 1", accessoir: "123123", takeProp: "77", benefit: "$45"},
-		{name: "Bundle 3", desc: "Desc 1", tarif: "Tarif 1", handheld: "iPhone 1", accessoir: "123123", takeProp: "77", benefit: "$45"},
-		{name: "Bundle 4", desc: "Desc 1", tarif: "Tarif 1", handheld: "iPhone 1", accessoir: "123123", takeProp: "77", benefit: "$45"},
-		{name: "Bundle 5", desc: "Desc 1", tarif: "Tarif 1", handheld: "iPhone 1", accessoir: "123123", takeProp: "77", benefit: "$45"},
+		{name: 'Bundle 1', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
+		{name: 'Bundle 2', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
+		{name: 'Bundle 3', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
+
 	]
 
 	getBundlesDone(bundles);
@@ -59,6 +58,7 @@ function getBundlesDone(result) {
 	dataStore.bundleList = result;
 
 	// call a callback to re-render
+	renderBundlesTable();
 }
 
 /**
@@ -68,16 +68,17 @@ function getBundlesDone(result) {
 **/
 function getTarifs(activeCustomer, relatedCustomers) {
 	// TODO: add logic to call backend system
-	var tarifs = [{}];
+	var tarifs = [{id: 'tarif1', name: 'Tarif 1', price: 7.58, rate: 2},{id: 'tarif2', name: 'Tarif 2', price: 7.58, rate: 2},{id: 'tarif3', name: 'Tarif 3', price: 7.58, rate: 2}];
 
 	getTarifsDone(tarifs);
 }
 
 function getTarifsDone(result) {
 	// TODO: add logic to call backend system
-	dataStore.tarifList = tarifs;
+	dataStore.tarifList = result;
 
 	// call a callback to re-render
+	renderTarifTable();
 }
 
 
@@ -89,13 +90,15 @@ function getTarifsDone(result) {
 function getHandhelds(activeCustomer, relatedCustomers) {
 	// TODO: add logic to call backend system
 
-	return dataStore.handheldList;
+	var handheld = [{id: 'hand1', name: 'Hand 1', price: 7.58, rate: 1},{id: 'hand2', name: 'Hand 2', price: 7.58, rate: 2},{id: 'hand3', name: 'Hand 3', price: 7.58, rate: 3}];;
+	getHandheldsDone(handheld);
 }
 
 function getHandheldsDone(result) {
 	// TODO: add logic to process results from backend system
 
-	return dataStore.handheldList;
+	dataStore.handheldList = result;
+	renderHandheldsTable();
 }
 
 
@@ -107,13 +110,15 @@ function getHandheldsDone(result) {
 function getAccessoirs(activeCustomer, relatedCustomers) {
 	// TODO: add logic to call backend system
 
-	return dataStore.accessoirList;
+	var accessoirs = [{id: 'access1', name: 'Access 1', price: 7.58, rate: 1},{id: 'access2', name: 'Access 2', price: 7.58, rate: 2},{id: 'access3', name: 'Access 3', price: 7.58, rate: 3}];;
+	getAccessoirsDone(accessoirs);
 }
 
-function getAccessoirsDone(activeCustomer, relatedCustomers) {
+function getAccessoirsDone(result) {
 	// TODO: add logic to process results from backend system
 
-	return dataStore.accessoirList;
+	dataStore.accessoirList = result;
+	renderAccessoirTable();
 }
 
 /**
@@ -126,13 +131,13 @@ function getAccessoirsDone(activeCustomer, relatedCustomers) {
 function updatePreferences(activeCustomer, relatedCustomers, optionType, preferenceValue) {
 	// TODO: add logic to call backend system
 
-	return dataStore.bundleList;
+	var result = {};
+	updatePreferences(result);
 }
 
 function updatePreferencesDone(result) {
 	// TODO: add logic to process results from backend system
 
-	return dataStore.bundleList;
 }
 
 
@@ -161,3 +166,4 @@ function respondToOfferDone(result) {
 function findIndexByKey(list, key, value) {
 	return list.findIndex(function (element) { return element[key] === value; });
 }
+

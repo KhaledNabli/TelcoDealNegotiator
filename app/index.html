@@ -30,10 +30,36 @@
 
       <div class="container">
         <div class="header">
-          <ul class="nav nav-pills pull-right">
-            <!-- menu items here as LI -->
-          </ul>
-          <h3 class="text-muted">SAS Deal Negotiator</h3>
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">SAS Deal Negotiator</a>
+              </div>
+
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+                <form class="navbar-form navbar-left" role="search">
+                  <div class="form-group">
+                    <label class="sr-only" for="searchMsisdnInput">MSISDN</label>
+                    <input type="text" class="form-control col-sm-12" id="searchMsisdnInput" placeholder="MSISDN or Contract">
+                  </div>
+                  <button type="button" class="btn btn-default" onclick="onFindCustomer(this);">Add</button>
+                </form>
+
+              </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+          </nav>
+
+
+
         </div>
 
 
@@ -41,21 +67,10 @@
 
           <div class="col-sm-5">
 
-            <div class="col-sm-12">
-              <h4>Customers to Negotiate</h4>
-            </div>
 
             <div class="col-sm-12">
 
-              <form class="form-inline ">
-                <div class="form-group">
-                  <label class="sr-only" for="searchMsisdnInput">MSISDN</label>
-                  <input type="text" class="form-control col-sm-12" id="searchMsisdnInput" placeholder="MSISDN or Contract">
-                </div>
-                <button type="button" class="btn btn-default" onclick="onFindCustomer(this);">Find</button>
-
-
-
+              <form class="form-inline">
                 <table id="customerTable" class="table">
                   <thead>
                     <tr> 
@@ -64,9 +79,10 @@
                       <th>MSISDN</th>
                       <th></th>
                     </tr>
-
                   </thead>
                   <tbody>
+
+
                   </tbody>
                 </table>
               </form>
@@ -77,19 +93,18 @@
 
           <div class="col-sm-2">
             <div class="col-sm-12 text-center kpi-circle" style="background-color: aquamarine;">
-              <h4>Budget </h4>
-              <p>$ 450</p>
+              <h4 id="customerSummaryLabel1"></h4>
+              <p id="customerSummaryValue1"></p>
             </div>
 
-            <div class="col-sm-12 text-center kpi-circle" style="background-color: ghostwhite;">
-              <h4>Total Discount</h4>
-              <p>$ 480</p>
+            <div class="col-sm-12 text-center kpi-circle" style="background-color: lightgreen;">
+              <h4 id="customerSummaryLabel2"></h4>
+              <p id="customerSummaryValue2"></p>
             </div>
           </div>
 
           <div class="col-sm-5">
-
-            <canvas id="myChart" width="400px" height="400px"></canvas>
+            <canvas id="myChart"></canvas>
           </div>
         </div>
 
@@ -112,227 +127,158 @@
 
               </thead>
               <tbody>
-               <tr> 
-                <td>{{name}}</td>
-                <td>{{desc}}</td>
-                <td>{{tarif}}</td>
-                <td>{{handheld}}</td>
-                <td>{{accessoir}}</td>
-                <td>81 %</td>
-                <td>$ 90</td>
-                <td>
-                  <div class="btn-group" role="group" aria-label="">
-                    <button role="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-                    <button role="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
-                  </div>
-                </td>
-              </tr>
-              <tr> 
-                <td>{{name}}</td>
-                <td>{{desc}}</td>
-                <td>{{tarif}}</td>
-                <td>{{handheld}}</td>
-                <td>{{accessoir}}</td>
-                <td>77 %</td>
-                <td>$ 120</td>
-                <td>
-                  <div class="btn-group" role="group" aria-label="">
-                    <button role="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-                    <button role="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
-                  </div>
-                </td>
-              </tr>
-              <tr> 
-                <td>{{name}}</td>
-                <td>{{desc}}</td>
-                <td>{{tarif}}</td>
-                <td>{{handheld}}</td>
-                <td>{{accessoir}}</td>
-                <td>56 %</td>
-                <td>$ 50</td>
-                <td>
-                  <div class="btn-group" role="group" aria-label="">
-                    <button role="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-                    <button role="button" class="btn btn-sm btn-primary"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+
+              </tbody>
+            </table>
 
 
 
 
+          </div>
+        </div>
+        <!-- Third Row -->
+        <div class="row">
+          <div class="col-sm-4">
+            <hr />
+            <h4>Tariff</h4>
+            <table id="tarifTable" class="table">
+              <thead>
+                <tr> 
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Preference</th>
+                </tr>
+              </thead>
+              <tbody>
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-sm-4">
+            <hr />
+            <h4>Handhelds</h4>
+
+            <table id="handheldsTable" class="table">
+              <thead>
+                <tr> 
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Preference</th>
+                </tr>
+
+              </thead>
+              <tbody>
+
+
+              </tbody>
+            </table>
+          </div>
+
+          <div class="col-sm-4">
+            <hr />
+            <h4>Accessoires</h4>
+
+            <table id="accessoiresTable" class="table">
+              <thead>
+                <tr>
+                  <th>Name</th>
+                  <th>Price</th>
+                  <th>Preference</th>
+                </tr>
+
+              </thead>
+              <tbody>
+
+
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+
+      </div>
+
+      <div class="container-fluid">
+        <div class="footer-fixed">
+          <p>Powered by SAS Customer Decision Hub</p>
         </div>
       </div>
-      <!-- Third Row -->
-      <div class="row">
-        <div class="col-sm-4">
-          <hr />
-          <h4>Tariff</h4>
-          <table id="tarifTable" class="table">
-            <thead>
-              <tr> 
-                <th>Name</th>
-                <th>Price</th>
-                <th>Preference</th>
-              </tr>
-            </thead>
-            <tbody>
 
-             <tr> 
-              <td>Tarif 1</td>
-              <td>Description</td>
-              <td><div class="starrr" data-object-type="tarif" data-object-key="2" data-rating="2"></div></td>
-            </tr>
-            <tr> 
-              <td>Tarif 2</td>
-              <td>Description</td>
-              <td><div class="starrr" data-object-type="tarif" data-object-key="2" data-rating="2"></div></td>
-            </tr>
-          </tbody>
-        </table>
+
+      <!-- handlebars templates -->
+      <script id="bundlesTableRow" type="text/x-handlebars-template">
+      <tr> 
+      <td>{{name}}</td>
+      <td>{{desc}}</td>
+      <td>{{tarif}}</td>
+      <td>{{handheld}}</td>
+      <td>{{accessoir}}</td>
+      <td>{{takeProp}}</td>
+      <td>{{takeBenefit}}</td>
+      <td>
+      <div class="btn-group" role="group" aria-label="">
+      <button role="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
+      <button role="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
       </div>
+      </td>
+      </tr>
+      </script>
+      <script id="optionFilterTableRow" type="text/x-handlebars-template">
+      <tr> 
+      <td>{{name}}</td>
+      <td>{{price}}</td>
+      <td><div class="starrr" data-object-type="tarif" data-object-key="{{id}}" data-rating="{{rate}}"></div></td>
+      </tr>
+      </script>
 
-      <div class="col-sm-4">
-        <hr />
-        <h4>Handhelds</h4>
-
-        <table id="handheldsTable" class="table">
-          <thead>
-            <tr> 
-              <th>Name</th>
-              <th>Price</th>
-              <th>Preference</th>
-            </tr>
-
-          </thead>
-          <tbody>
-            <tr> 
-              <td>iPhone</td>
-              <td>$750</td>
-              <td><div class="starrr" data-object-type="handheld" data-object-key="1" data-rating="2"></div></td>
-            </tr>
-            <tr> 
-              <td>Samsung Note</td>
-              <td>$580</td>
-              <td><div class="starrr" data-object-type="handheld" data-object-key="2" data-rating="5"></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="col-sm-4">
-        <hr />
-        <h4>Accessoires</h4>
-
-        <table id="accessoiresTable" class="table">
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Preference</th>
-            </tr>
-
-          </thead>
-          <tbody>
-            <tr> 
-              <td>Headset Bluetooth</td>
-              <td>Description</td>
-              <td><div class="starrr" data-object-type="accessoir" data-object-key="1" data-rating="2"></div></td>
-            </tr>
-            <tr> 
-              <td>VR </td>
-              <td>Description</td>
-              <td><div class="starrr" data-object-type="accessoir" data-object-key="2" data-rating="2"></div></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-
-  </div>
-
-  <div class="container-fluid">
-    <div class="footer-fixed">
-      <p>Powered by SAS Customer Decision Hub</p>
-    </div>
-  </div>
-
-
-  <!-- handlebars templates -->
-  <script id="bundlesTableRow" type="text/x-handlebars-template">
-  <tr> 
-  <td>{{name}}</td>
-  <td>{{desc}}</td>
-  <td>{{tarif}}</td>
-  <td>{{handheld}}</td>
-  <td>{{accessoir}}</td>
-  <td>{{takeProp}}</td>
-  <td>{{takeBenefit}}</td>
-  <td>
-  <div class="btn-group" role="group" aria-label="">
-  <button role="button" class="btn btn-sm btn-success"><span class="glyphicon glyphicon-ok" aria-hidden="true"></button>
-  <button role="button" class="btn btn-sm btn-danger"><span class="glyphicon glyphicon-remove" aria-hidden="true"></button>
-  </div>
-  </td>
-  </tr>
-  </script>
-  <script id="optionFilterTableRow" type="text/x-handlebars-template">
-  <tr> 
-  <td>{{name}}</td>
-  <td>{{price}}</td>
-  <td><div class="starrr" data-object-type="tarif" data-object-key="{{id}}" data-rating="{{rate}}"></div></td>
-  </tr>
-  </script>
-
-  <script id="customerTableRow" type="text/x-handlebars-template">
-  <tr>
-  <td><input name="selectedCustomerId" type="radio" value="{{id}}" onclick="onSelectCustomer(this)"></td>
-  <td>{{name}}</td>
-  <td>{{msisdn}}</td>
-  <td><button class="btn btn-sm btn-warning" type="button" onclick="onRemoveCustomer(this);">Remove</button></td>
-  </tr>
-  </script>
+      <script id="customerTableRow" type="text/x-handlebars-template">
+      <tr>
+      <td><input name="selectedCustomerId" type="radio" value="{{id}}" onclick="onSelectCustomer(this)"></td>
+      <td>{{name}}</td>
+      <td>{{msisdn}}</td>
+      <td><button class="btn btn-sm btn-warning" type="button" onclick="onRemoveCustomer(this);">Remove</button></td>
+      </tr>
+      </script>
 
 
 
-  <!-- build:js scripts/vendor.js -->
-  <!-- bower:js -->
-  <script src="/bower_components/jquery/dist/jquery.js"></script>
-  <script src="/bower_components/handlebars/handlebars.js"></script>
-  <script src="/bower_components/starrr/dist/starrr.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
+      <!-- build:js scripts/vendor.js -->
+      <!-- bower:js -->
+      <script src="/bower_components/jquery/dist/jquery.js"></script>
+      <script src="/bower_components/handlebars/handlebars.js"></script>
+      <script src="/bower_components/starrr/dist/starrr.js"></script>
+      <!-- endbower -->
+      <!-- endbuild -->
 
-    <!-- build:js scripts/chart.js -->
-  <!-- bower:js -->
-  <script src="/bower_components/Chart.js/dist/Chart.js"></script>
-  <!-- endbower -->
-  <!-- endbuild -->
+      <!-- build:js scripts/chart.js -->
+      <!-- bower:js -->
+      <script src="/bower_components/Chart.js/dist/Chart.js"></script>
+      <!-- endbower -->
+      <!-- endbuild -->
 
 
-  <!-- build:js scripts/plugins.js -->
+      <!-- build:js scripts/plugins.js -->
 
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
-  <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
-  <!-- endbuild -->
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tooltip.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/modal.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/transition.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/button.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/popover.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/carousel.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/scrollspy.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/collapse.js"></script>
+      <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/tab.js"></script>
+      <!-- endbuild -->
 
-  <!-- build:js scripts/main.js -->
-  <script src="scripts/boot.js"></script>
-  <script src="scripts/ui_controller.js"></script>
-  <script src="scripts/api.js"></script>
-  <!-- endbuild -->
-</body>
-</html>
+      <!-- build:js scripts/main.js -->
+      <script src="scripts/boot.js"></script>
+      <script src="scripts/ui_controller.js"></script>
+      <script src="scripts/api.js"></script>
+      <!-- endbuild -->
+    </body>
+    </html>

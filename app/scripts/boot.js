@@ -12,7 +12,7 @@ jQuery(document).ready(function () {
 
 
 function compileTemplates() {
-	$("script[type='text/x-handlebars-template']").each(function(elem) {
+	$('script[type=\'text/x-handlebars-template\']').each(function(elem) {
 		htmlTemplates[this.id] = Handlebars.compile($(this).html());
 	});
 }
