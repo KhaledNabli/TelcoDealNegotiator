@@ -2,10 +2,6 @@ function startUi() {
 
 	initRatingStars('div.starrr', optionRatingHasChanged);
 
-	getCustomerList();
-
-
-
 }
 
 
@@ -80,7 +76,7 @@ function onFindCustomer(element) {
 		// empty
 	} else if (dataStore.selectedCustomersIds.includes(customerId)) {
 		// already in the list
-	} else if (findIndexByKey(dataStore.customerList, 'id', customerId) < 0) {
+	} else if (findIndexByKey(lookUpData.customers, 'id', customerId) < 0) {
 		// invalid
 	} else {
 		addCustomerToNegotiation(customerId);
@@ -93,7 +89,7 @@ function updateCustomersSummary() {
 	$('#customerSummaryLabel1').text('Benefit'); // TODO make dynamic
 	$('#customerSummaryLabel2').text('Lifetime Value'); // TODO make dynamic
 
-	var customerKpis1 = dataStore.customerList.map(function (customer) {
+	var customerKpis1 = lookUpData.customers.map(function (customer) {
 		// sum on budget
 		if(dataStore.selectedCustomersIds.includes(customer.id)) {
 			return customer.budget;
@@ -104,7 +100,7 @@ function updateCustomersSummary() {
 
 	var customerKpi1Sum = customerKpis1.reduce(function(pv, cv) { return pv + cv; }, 0);
 
-	var customerKpis2 = dataStore.customerList.map(function (customer) {
+	var customerKpis2 = lookUpData.customers.map(function (customer) {
 		// sum on budget
 		if(dataStore.selectedCustomersIds.includes(customer.id)) {
 			return customer.clv;
@@ -153,12 +149,12 @@ function onRemoveCustomer(element) {
 
 function addCustomerToNegotiation(customerId) {
 	console.log('Adding customer ' + customerId + ' to negotiation');
-	var customerIndex = findIndexByKey(dataStore.customerList, 'id', customerId);
+	var customerIndex = findIndexByKey(lookUpData.customers, 'id', customerId);
 	
 	if(customerIndex >= 0) {
 		dataStore.selectedCustomersIds.push(customerId);
 
-		var customerObj = dataStore.customerList[customerIndex];
+		var customerObj = lookUpData.customers[customerIndex];
 		var customerData = {};
 		customerData.name = customerObj.name;
 		customerData.id = customerObj.id;
@@ -174,7 +170,7 @@ function removeCustomerFromNegotiation(customerId) {
 	console.log('Adding customer ' + customerId + ' to negotiation');
 
 
-	var customerIndex = findIndexByKey(dataStore.customerList, 'id', customerId);
+	var customerIndex = findIndexByKey(lookUpData.customers, 'id', customerId);
 	
 	if(customerIndex >= 0) {
 		var listIndex = dataStore.selectedCustomersIds.indexOf(customerId);

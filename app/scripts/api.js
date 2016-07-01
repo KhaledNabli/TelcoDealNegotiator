@@ -1,7 +1,6 @@
 var dataStore = {
 	activeCustomerId : undefined,
 	selectedCustomersIds: [],
-	customerList: [],
 	bundleList: [],
 	tarifList: [],
 	handheldList: [],
@@ -54,13 +53,12 @@ function getCustomerList() {
 	// TODO: add logic to call backend system
 
 
-	getCustomerListDone(lookUpData.customers);
 }
 
 
 function getCustomerListDone(result) {
 	// TODO: add logic to process results from backend system
-	dataStore.customerList = result;
+
 
 	// call a callback to re-render.
 }
@@ -223,49 +221,80 @@ function findIndexByKey(list, key, value) {
 }
 
 
-function getCustomerById(customerId) {
-	var index = findIndexByKey(lookUpData.customers, 'id', customerId);
-
-	if (index >= 0) {
-		return dataStore.customerList[index];
+function findObjectByKey(list, key, value) {
+	var index = findIndexByKey(list, key, value);
+	if(index>=0) {
+		return list[index]
 	}
-
 	return undefined;
+}
+
+
+function findObjectsByKeyArray(list, key, valueArray) {
+	var objectList = [];
+	for(value of valueArray) {
+		var object = findObjectByKey(list, key, value);
+		if(object != undefined) {
+			objectList.push(object);
+		}
+	}
+	return objectList;
+}
+
+
+
+
+function getCustomerById(customerId) {
+	return findObjectByKey(lookUpData.customers, 'id', customerId);
 }
 
 
 function getCustomerListByIds(customerIds) {
-	var result = [];
-	for(var customerId of customerIds) {
-		var customerObj = getCustomerById(customerId);
-		if(customerObj != undefined) {
-			result.push(customerObj);
-		}
-	}
-
-	return result;
+	return findObjectsByKeyArray(lookUpData.customers, 'id', customerIds);
 }
 
-
 function getBundleById(bundleId) {
-	var index = findIndexByKey(lookUpData.bundles, 'id', bundleId);
-
-	if (index >= 0) {
-		return lookUpData.bundles[index];
-	}
-
-	return undefined;
+	return findObjectByKey(lookUpData.bundles, 'id', bundleId);
 }
 
 
 function getBundleListByIds(bundleIds) {
-	var result = [];
-	for(var bundleId of bundleIds) {
-		var bundleObj = getBundleById(bundleId);
-		if(bundleObj != undefined) {
-			result.push(bundleObj);
-		}
-	}
-
-	return result;
+	return findObjectsByKeyArray(lookUpData.bundles, 'id', bundleIds);
 }
+
+
+function getTarifById(tarifId) {
+	return findObjectByKey(lookUpData.tarifs, 'id', tarifId);
+}
+
+
+function getTarifListByIds(tarifIds) {
+	return findObjectsByKeyArray(lookUpData.tarifs, 'id', tarifIds);
+}
+
+
+
+function getHandheldById(handheldId) {
+	return findObjectByKey(lookUpData.handhelds, 'id', handheldId);
+}
+
+
+function getHandheldListByIds(handheldIds) {
+	return findObjectsByKeyArray(lookUpData.handhelds, 'id', handheldIds);
+}
+
+
+function getAccessoirById(accessoirId) {
+	return findObjectByKey(lookUpData.accessoirs, 'id', accessoirId);
+}
+
+
+function getAccessoirListByIds(accessoirIds) {
+	return findObjectsByKeyArray(lookUpData.accessoirs, 'id', accessoirIds);
+}
+
+
+
+
+
+
