@@ -31,30 +31,27 @@ function initRatingStars(selector, onChangeHandler) {
 
 function updateSpiderChart() {
 
-	var data = {
-		labels: ['SMS', 'DATA', 'NATIONAL', 'CLV', 'NPS', 'INTERNATIONAL', 'ROAMING'],
-		datasets: [
-		{
-			label: 'Khaled',
-			backgroundColor: 'rgba(179,181,198,0.2)',
-			borderColor: 'rgba(179,181,198,1)',
-			pointBackgroundColor: 'rgba(179,181,198,1)',
+	var selectedCustomerList = getCustomerListByIds(dataStore.selectedCustomersIds);
+
+	var dataSets = selectedCustomerList.map(function (customerObj) {
+		var bgColor = generateRandomeColor();
+		return {
+			label: customerObj.name,
+			backgroundColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",0.2)",
+			borderColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",1)",
+			pointBackgroundColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",1)",
 			pointBorderColor: '#fff',
 			pointHoverBackgroundColor: '#fff',
-			pointHoverBorderColor: 'rgba(179,181,198,1)',
-			data: [65, 59, 90, 81, 56, 55, 40]
-		},
-		{
-			label: 'Adrian',
-			backgroundColor: 'rgba(255,99,132,0.2)',
-			borderColor: 'rgba(255,99,132,1)',
-			pointBackgroundColor: 'rgba(255,99,132,1)',
-			pointBorderColor: '#fff',
-			pointHoverBackgroundColor: '#fff',
-			pointHoverBorderColor: 'rgba(255,99,132,1)',
-			data: [28, 48, 40, 19, 96, 27, 100]
+			pointHoverBorderColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",1)",
+			data: [customerObj.sms, customerObj.voice, customerObj.data, customerObj.national, customerObj.roaming, customerObj.churn]
 		}
-		]
+	});
+
+
+
+	var data = {
+		labels: ['SMS', 'VOICE', 'DATA', 'NATIONAL', 'INTERNATIONAL', 'CHURN'],
+		datasets: dataSets
 	};
 
 	var ctx = $('canvas#myChart');
@@ -66,7 +63,14 @@ function updateSpiderChart() {
 }
 
 
+function generateRandomeColor() {
+	var red = Math.floor(Math.random() * 256);
+	var green = Math.floor(Math.random() * 256);
+	var blue = Math.floor(Math.random() * 256);
 
+
+	return [red, green, blue];
+}
 
 
 function onFindCustomer(element) {
@@ -82,7 +86,7 @@ function onFindCustomer(element) {
 		addCustomerToNegotiation(customerId);
 	}
 	
-
+	return false;
 }
 
 function updateCustomersSummary() {
@@ -126,10 +130,12 @@ function onSelectCustomer(element) {
 	console.log('Customer selected: ' + customerId);
 	dataStore.activeCustomerId = customerId;
 
-	getBundles();
-	getTarifs();
-	getHandhelds();
-	getAccessoirs();
+	var activeCustomer = getCustomerById(customerId);
+	var relatedCustomers = getCustomerListByIds(dataStore.selectedCustomersIds);
+	getBundles(activeCustomer, relatedCustomers);
+	getTarifs(activeCustomer, relatedCustomers);
+	getHandhelds(activeCustomer, relatedCustomers);
+	getAccessoirs(activeCustomer, relatedCustomers);
 }
 
 

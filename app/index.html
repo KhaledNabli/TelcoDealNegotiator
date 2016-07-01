@@ -46,7 +46,7 @@
               <!-- Collect the nav links, forms, and other content for toggling -->
               <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-                <form class="navbar-form navbar-left" role="search">
+                <form class="navbar-form navbar-left" role="" onsubmit="return onFindCustomer(this);">
                   <div class="form-group">
                     <label class="sr-only" for="searchMsisdnInput">MSISDN</label>
                     <input type="text" class="form-control col-sm-12" id="searchMsisdnInput" placeholder="MSISDN or Contract">
@@ -249,6 +249,7 @@
       <script src="/bower_components/jquery/dist/jquery.js"></script>
       <script src="/bower_components/handlebars/handlebars.js"></script>
       <script src="/bower_components/starrr/dist/starrr.js"></script>
+      <script src="/bower_components/jstz/jstz.js"></script>
       <!-- endbower -->
       <!-- endbuild -->
 
@@ -260,7 +261,6 @@
 
 
       <!-- build:js scripts/plugins.js -->
-
       <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/affix.js"></script>
       <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/alert.js"></script>
       <script src="/bower_components/bootstrap-sass/assets/javascripts/bootstrap/dropdown.js"></script>
@@ -279,6 +279,7 @@
       <script src="scripts/boot.js"></script>
       <script src="scripts/ui_controller.js"></script>
       <script src="scripts/api.js"></script>
+      <script src="scripts/sas-rtdm.js"></script>
       <!-- endbuild -->
     </body>
     </html>
