@@ -37,12 +37,12 @@ function updateSpiderChart() {
 		var bgColor = generateRandomeColor();
 		return {
 			label: customerObj.name,
-			backgroundColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",0.2)",
-			borderColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",1)",
-			pointBackgroundColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",1)",
+			backgroundColor: 'rgba('+bgColor[0]+','+bgColor[1]+ ',' +bgColor[2]+ ',0.2)',
+			borderColor: 'rgba('+bgColor[0]+','+bgColor[1]+ ',' +bgColor[2]+ ',1)',
+			pointBackgroundColor: 'rgba('+bgColor[0]+','+bgColor[1]+ ',' +bgColor[2]+ ',1)',
 			pointBorderColor: '#fff',
 			pointHoverBackgroundColor: '#fff',
-			pointHoverBorderColor: "rgba("+bgColor[0]+","+bgColor[1]+ "," +bgColor[2]+ ",1)",
+			pointHoverBorderColor: 'rgba('+bgColor[0]+','+bgColor[1]+ ',' +bgColor[2]+ ',1)',
 			data: [customerObj.sms, customerObj.voice, customerObj.data, customerObj.national, customerObj.roaming, customerObj.churn]
 		}
 	});

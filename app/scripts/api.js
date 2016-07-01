@@ -10,9 +10,9 @@ var dataStore = {
 
 var lookUpData = {
 	bundles: [
-		{id: "1234", name: 'Bundle 1', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
-		{id: "2345", name: 'Bundle 2', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
-		{id: "3456", name: 'Bundle 3', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
+		{id: '1234', name: 'Bundle 1', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
+		{id: '2345', name: 'Bundle 2', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
+		{id: '3456', name: 'Bundle 3', desc: 'Desc 1', tarif: 'Tarif 1', handheld: 'iPhone 1', accessoir: '123123', takeProp: '77', benefit: '$45'},
 
 	],
 	customers: [
@@ -40,8 +40,8 @@ var lookUpData = {
 }
 
 var settings = {
-	rtdmHost : "10.38.15.76",
-	getOffersEvent : "Feedback_Event",
+	rtdmHost : '10.38.15.76',
+	getOffersEvent : 'Feedback_Event',
 };
 
 
@@ -94,9 +94,9 @@ function getBundlesDone(result) {
 function getBundlesViaRTDM(subscriberID) {
 	var rtdmRequestInputs = {
 		subscriberID: subscriberID, 
-		bundleID: "", 
-		smartPhoneID: "", 
-		accesoriesID: ""
+		bundleID: '', 
+		smartPhoneID: '', 
+		accesoriesID: ''
 	};
 
 	sendRequestToRTDM(settings.rtdmHost, settings.getOffersEvent, rtdmRequestInputs).done(getBundlesViaRTDMDone);
